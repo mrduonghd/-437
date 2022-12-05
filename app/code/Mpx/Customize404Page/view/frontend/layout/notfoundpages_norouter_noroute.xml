@@ -1,0 +1,8 @@
+<page>
+    <body>
+        <referenceContainer name="content">
+            <block name="no.route.other" as="no.route.other"
+                   template="Mpx_Customize404Page::pagenotfound.phtml" />
+        </referenceContainer>
+    </body>
+</page>

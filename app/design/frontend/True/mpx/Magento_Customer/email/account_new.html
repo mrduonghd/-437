@@ -1,0 +1,46 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "%store_name" 会員登録が完了しました。 store_name=$store.frontend_name}} @-->
+<!--@vars {
+"var store.frontend_name":"Store Name",
+"var this.getUrl($store,'customer/account/',[_nosid:1])":"Customer Account URL",
+"var this.getUrl($store,'customer/account/createPassword/',[_query:[id:$customer.id,token:$customer.rp_token],_nosid:1])":"Password Reset URL",
+"var customer.email":"Customer Email",
+"var customer.name":"Customer Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting">{{trans "%name," name=$customer.name}} 様</p>
+<p>{{trans "%store_nameへの会員登録が完了しました。" store_name=$store.frontend_name}}</p>
+<p>
+    {{trans
+    'ご登録された認証情報で<a href="%customer_url">マイアカウントページ</a>にログインしてください。'
+
+    customer_url=$this.getUrl($store,'customer/account/',[_nosid:1])
+    |raw}}
+</p>
+<ul>
+    <li><strong>{{trans "Email:"}}</strong> {{var customer.email}}</li>
+    <li><strong>{{trans "Password:"}}</strong> <em>{{trans "Password you set when creating account"}}</em></li>
+</ul>
+<p>
+    {{trans
+    'Forgot your account password? Click <a href="%reset_url">here</a> to reset it.'
+
+    reset_url="$this.getUrl($store,'customer/account/createPassword/',[_query:[id:$customer.id,token:$customer.rp_token],_nosid:1])"
+    |raw}}
+</p>
+<p>{{trans "アカウントにログインすると以下のことが行えます :"}}</p>
+<ul>
+    <li>{{trans "素早く簡単にチェックアウト"}}</li>
+    <li>{{trans "Check the status of orders"}}</li>
+    <li>{{trans "View past orders"}}</li>
+    <li>{{trans "複数の住所・配送先を登録"}}</li>
+</ul>
+
+{{template config_path="design/email/footer_template"}}

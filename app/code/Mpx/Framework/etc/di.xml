@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mpx Software.
+ *
+ * @category  Mpx
+ * @package   Mpx_Framework
+ * @author    Mpx
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+        <preference for="Magento\Framework\Mail\Template\TransportBuilder" type="Mpx\Framework\Mail\Template\TransportBuilder" />
+</config>

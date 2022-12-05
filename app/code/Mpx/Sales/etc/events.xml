@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="email_order_set_template_vars_before">
+        <observer name="set_email_variable_seller_order"
+                  instance="Mpx\Sales\Observer\SetEmailVariableSellerOrder" />
+    </event>
+
+    <event name="email_shipment_set_template_vars_before">
+        <observer name="set_email_variable_seller_shipment"
+                  instance="Mpx\Sales\Observer\SetEmailVariableSellerShipment" />
+    </event>
+
+</config>

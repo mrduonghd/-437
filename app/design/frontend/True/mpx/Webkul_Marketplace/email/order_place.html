@@ -1,0 +1,81 @@
+<!--
+/**
+ * Mpx Software.
+ *
+ * @category  Mpx
+ * @package   Mpx_Marketplace
+ * @author    Mpx
+ */
+-->
+<!--@subject Order Placed Notification To Seller  @-->
+<!--@vars {
+"var this.getUrl($store, 'customer/account/')":"Customer Account URL",
+"var customer.email":"Customer Email",
+"var customer.name":"Customer Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">{{trans "%last_name" last_name=$last_name}} {{trans "%customer_name" customer_name=$myvar3}} ({{trans "%last_name_kana" last_name_kana=$last_name_kana}} {{trans "%first_name_kana" first_name_kana=$first_name_kana}}) 様,</p>
+            <p>
+                {{trans "* This email is an automatic reply from the system."}}<br><br>
+                {{trans "A new order has been placed."}}<br>
+                {{trans 'You can check the status of your order by logging in to <a href="%account_url">account</a>.' account_url=$this.getUrl($store,'marketplace/order/history/',[_nosid:1]) |raw}}
+            </p>
+        </td>
+    </tr>
+    <tr class="email-summary">
+        <td>
+            <h1>{{trans 'Order Number <span class="no-link">#%increment_id</span>' increment_id=$myvar1 |raw}}</h1>
+            <p>{{trans 'Date/Time Order <span class="no-link">%created_at</span>' created_at=$myvar2 |raw}}</p>
+            <p>{{trans 'Sold By <span class="no-link">%shop_title</span>' shop_title=$shop_title |raw}}</p>
+        </td>
+    </tr>
+    <tr class="email-information">
+        <td>
+            <table class="order-details">
+                <tr>
+                    <td class="address-details">
+                        <h3>{{trans "Billing Info"}}</h3>
+                        <p>{{var myvar4|raw}}</p>
+                    </td>
+                    {{depend isNotVirtual}}
+                    <td class="address-details">
+                        <h3>{{trans "Shipping Info"}}</h3>
+                        <p>{{var myvar6|raw}}</p>
+                    </td>
+                    {{/depend}}
+                </tr>
+                <tr>
+                    <td class="method-info">
+                        <h3>{{trans "Payment Method"}}</h3>
+                        {{var myvar5|raw}}
+                    </td>
+                    {{depend isNotVirtual}}
+                    <td class="method-info">
+                        <h3>{{trans "Shipping Method"}}</h3>
+                        <p>{{var myvar9|raw}}</p>
+                    </td>
+                    {{/depend}}
+                </tr>
+            </table>
+            <table class="email-items">
+                <thead>
+                <tr>
+                    <th class="item-info" colspan="2">{{trans "Item"}}</th>
+                    <th class="item-qty">{{trans "Qty"}}</th>
+                    <th class="item-price">{{trans "Unit Price"}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{var myvar8|raw}}
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

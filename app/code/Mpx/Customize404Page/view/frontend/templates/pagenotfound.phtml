@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var Template $block
+ */
+
+use Magento\Framework\View\Element\Template;
+
+?>
+
+<?=
+/* @noEscape */ "<h1>". __('Page Not Found') ."</h1> ".
+    "<p>". __('The page you were looking for has been deleted or moved.') . "</p>".
+    "<p>". __('Sorry to trouble you, Please access from <a href="%baseUrl"> <span>Top Page</span></a>', [
+        'baseUrl' => $block->getBaseUrl()])."</p>"
+?>

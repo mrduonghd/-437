@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="google" type="host">www.google.com</value>
+                <value id="gstatic" type="host">www.gstatic.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="www_sandbox_paypal" type="host">www.sandbox.paypal.com</value>
+                <value id="paypal_objects" type="host">www.paypalobjects.com</value>
+                <value id="www_paypal" type="host">www.paypal.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="data" type="host">data:</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
